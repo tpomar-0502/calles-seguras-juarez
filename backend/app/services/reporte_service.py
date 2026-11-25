@@ -1,8 +1,7 @@
 import math
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from fastapi import HTTPException, status
-from sqlalchemy.orm import Session
+
 from app.core.config import settings
 from app.models import (
     CategoriaReporte,
@@ -16,6 +15,8 @@ from app.models import (
 )
 from app.schemas.schemas import CambioEstadoIn, ReporteCreate, ReporteOut
 from app.services.external_apis import esta_en_juarez
+from fastapi import HTTPException, status
+from sqlalchemy.orm import Session
 
 TZ_JUAREZ = ZoneInfo(settings.TIMEZONE)
 
@@ -221,4 +222,4 @@ def cambiar_estado_reporte(db: Session, rep: Reporte, data: CambioEstadoIn, usua
                     status_code=400,
                     detail="La fecha de reparación no puede ser futura ni anterior a la fecha del reporte.",
                 )
-            rep.fecha_reparacion
+            rep.fecha_reparacion = data.fecha_reparacion
