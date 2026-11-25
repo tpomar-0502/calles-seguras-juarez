@@ -7,7 +7,7 @@ e Instituto Municipal de Investigación y Planeación (IMIP) de Ciudad Juárez.
 import random
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from passlib.context import CryptContext
+import bcrypt
 from app.core.database import SessionLocal
 from app.models import (
     CategoriaReporte,
@@ -26,7 +26,7 @@ from app.models import (
 )
 
 TZ_JUAREZ = ZoneInfo("America/Ciudad_Juarez")
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+import bcrypt
 
 # 24 colonias reales de Ciudad Juárez con coordenadas reales aproximadas
 COLONIAS_JUAREZ = [
@@ -69,7 +69,7 @@ def run_seed():
             return
 
         print("Insertando usuarios de prueba por rol...")
-        hashed = pwd_context.hash("Juarez2026!")
+        hashed = bcrypt.hashpw("Juarez2026!".encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
         usuarios_data = [
             ("Ana Ciudadana", "ciudadano@callesjuarez.org", RolUsuario.CIUDADANO),
             ("Carlos Moderador", "moderador@callesjuarez.org", RolUsuario.MODERADOR),

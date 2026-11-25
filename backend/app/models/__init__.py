@@ -15,3 +15,21 @@ from app.models.entities import (
     Usuario,
     UsuarioColoniaInteres,
 )
+
+__all__ = [
+    "Base",
+    "CategoriaReporte",
+    "Colonia",
+    "EstadoReporte",
+    "HistorialEstado",
+    "InteraccionReporte",
+    "NivelAgua",
+    "Reporte",
+    "RolUsuario",
+    "Sector",
+    "SeveridadBache",
+    "TipoDanoBache",
+    "TipoInteraccion",
+    "Usuario",
+    "UsuarioColoniaInteres",
+]
