@@ -1,31 +1,45 @@
-from datetime import UTC, datetime, timedelta
-
+from fastapi import Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
+from sqlalchemy.orm import Session
 from app.core.config import settings
-from jose import JWTError, jwt
-from passlib.context import CryptContext
+from app.core.database import get_db
+from app.core.security import decode_token
+from app.models import RolUsuario, Usuario
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login", auto_error=False)
 
 
-def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
-
-
-def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
-    to_encode = data.copy()
-    expire = datetime.now(UTC) + (
-        expires_delta or timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
-    to_encode.update({"exp": expire})
-    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
-
-
-def decode_token(token: str) -> dict | None:
-    try:
-        return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-    except JWTError:
+def get_current_user_optional(
+    token: str | None = Depends(oauth2_scheme), db: Session = Depends(get_db)
+) -> Usuario | None:
+    if not token:
         return None
+    payload = decode_token(token)
+    if not payload or "sub" not in payload:
+        return None
+    user = db.query(Usuario).filter(Usuario.correo == payload["sub"]).first()
+    if not user or not user.activo:
+        return None
+    return user
+
+
+def get_current_user(user: Usuario | None = Depends(get_current_user_optional)) -> Usuario:
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Sesión inválida o expirada. Inicia sesión nuevamente.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    return user
+
+
+def require_roles(*roles: RolUsuario):
+    def role_checker(current_user: Usuario = Depends(get_current_user)) -> Usuario:
+        if current_user.rol not in roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="No tienes permisos para realizar esta acción.",
+            )
+        return current_user
+
+    return role_checker
