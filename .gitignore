@@ -1,0 +1,17 @@
+# Variables de entorno y secretos
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# Sistema / IDEs
+.DS_Store
+.vscode/

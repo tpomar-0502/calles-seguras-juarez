@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: csj_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-csj_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-csj_password_seguro_2026}
+      POSTGRES_DB: ${POSTGRES_DB:-calles_seguras_juarez}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-csj_user} -d ${POSTGRES_DB:-calles_seguras_juarez}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    container_name: csj_backend
+    env_file:
+      - ../.env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-csj_user}:${POSTGRES_PASSWORD:-csj_password_seguro_2026}@db:5432/${POSTGRES_DB:-calles_seguras_juarez}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "alembic -c /app/db/alembic.ini upgrade head &&
+             python /app/db/seed.py &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: csj_frontend
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8000/api/v1}
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

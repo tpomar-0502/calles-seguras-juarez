@@ -1,0 +1,17 @@
+from app.models.entities import (
+    Base,
+    CategoriaReporte,
+    Colonia,
+    EstadoReporte,
+    HistorialEstado,
+    InteraccionReporte,
+    NivelAgua,
+    Reporte,
+    RolUsuario,
+    Sector,
+    SeveridadBache,
+    TipoDanoBache,
+    TipoInteraccion,
+    Usuario,
+    UsuarioColoniaInteres,
+)
