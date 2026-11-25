@@ -223,4 +223,25 @@ def cambiar_estado_reporte(db: Session, rep: Reporte, data: CambioEstadoIn, usua
                     detail="La fecha de reparación no puede ser futura ni anterior a la fecha del reporte.",
                 )
             rep.fecha_reparacion = data.fecha_reparacion
+        if nuevo == EstadoReporte.RECHAZADO:
+            rep.motivo_rechazo = data.motivo_rechazo
+    else:
+        if nuevo != EstadoReporte.RECHAZADO or usuario.rol != RolUsuario.MODERADOR:
+            raise HTTPException(status_code=403, detail="Solo un moderador puede rechazar un encharcamiento.")
+        rep.motivo_rechazo = data.motivo_rechazo or "Rechazado por moderación"
+
+    anterior = rep.estado
+    rep.estado = nuevo
+    db.add(
+        HistorialEstado(
+            reporte_id=rep.id,
+            estado_anterior=anterior,
+            estado_nuevo=nuevo,
+            comentario_publico=data.comentario_publico or f"Estado actualizado a {nuevo.value}.",
+            usuario_id=usuario.id,
+            fecha_cambio=ahora,
+        )
+    )
+    db.commit()
+    db.refresh(rep)
     return rep
