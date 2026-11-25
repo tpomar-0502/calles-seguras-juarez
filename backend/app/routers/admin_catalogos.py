@@ -3,9 +3,7 @@ import io
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from fastapi import APIRouter, Depends, HTTPException, Response, status
-from sqlalchemy import func
-from sqlalchemy.orm import Session, joinedload
+
 from app.core.config import settings
 from app.core.database import get_db
 from app.core.deps import require_roles
@@ -27,6 +25,9 @@ from app.schemas.schemas import (
     SectorOut,
     UsuarioOut,
 )
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from sqlalchemy import func
+from sqlalchemy.orm import Session, joinedload
 
 router = APIRouter(tags=["Catálogos, Tablero y Administración"])
 TZ_JUAREZ = ZoneInfo(settings.TIMEZONE)
