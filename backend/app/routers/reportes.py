@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import or_
-from sqlalchemy.orm import Session, joinedload
+
 from app.core.config import settings
 from app.core.database import get_db
 from app.core.deps import get_current_user, get_current_user_optional, require_roles
@@ -33,6 +31,9 @@ from app.services.reporte_service import (
     distancia_haversine_metros,
     serializar_reporte,
 )
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy import or_
+from sqlalchemy.orm import Session, joinedload
 
 router = APIRouter(prefix="/reportes", tags=["Reportes Ciudadanos"])
 TZ_JUAREZ = ZoneInfo(settings.TIMEZONE)

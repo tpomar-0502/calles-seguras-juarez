@@ -23,7 +23,7 @@ jobs:
           pip install -r backend/requirements.txt
 
       - name: Ejecutar linter (Ruff)
-        run: ruff check backend/app backend/tests --ignore E501
+        run: ruff check --config backend/pyproject.toml backend/app backend/tests
 
       - name: Ejecutar pruebas unitarias y de integración (Pytest)
         env:

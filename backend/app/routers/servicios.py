@@ -1,5 +1,5 @@
-from fastapi import APIRouter, HTTPException
 from app.services.external_apis import geocodificar_direccion, obtener_pronostico_lluvia
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter(prefix="/servicios", tags=["Servicios Externos"])
 

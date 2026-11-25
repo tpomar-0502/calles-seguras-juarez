@@ -1,6 +1,8 @@
 import enum
 from datetime import datetime
 from zoneinfo import ZoneInfo
+
+from app.core.database import Base
 from sqlalchemy import (
     Boolean,
     Column,
@@ -15,7 +17,6 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 from sqlalchemy.orm import relationship
-from app.core.database import Base
 
 TZ_JUAREZ = ZoneInfo("America/Ciudad_Juarez")
 

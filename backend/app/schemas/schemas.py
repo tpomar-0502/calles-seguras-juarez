@@ -1,6 +1,6 @@
 import re
 from datetime import date, datetime
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator, model_validator
+
 from app.models import (
     CategoriaReporte,
     EstadoReporte,
@@ -9,6 +9,14 @@ from app.models import (
     SeveridadBache,
     TipoDanoBache,
     TipoInteraccion,
+)
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    EmailStr,
+    Field,
+    field_validator,
+    model_validator,
 )
 
 
