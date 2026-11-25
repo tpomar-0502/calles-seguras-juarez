@@ -223,3 +223,4 @@ def cambiar_estado_reporte(db: Session, rep: Reporte, data: CambioEstadoIn, usua
                     detail="La fecha de reparación no puede ser futura ni anterior a la fecha del reporte.",
                 )
             rep.fecha_reparacion = data.fecha_reparacion
+    return rep
