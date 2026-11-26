@@ -41,39 +41,49 @@ El entorno de producción cuenta con 5 usuarios precargados para validar cada ni
 ## Instalación y Ejecución Local
 
 ### Opción A: Con Docker Compose
+
 ```bash
 git clone [https://github.com/OmarPadilla05/calles-seguras-juarez.git](https://github.com/OmarPadilla05/calles-seguras-juarez.git)
 cd calles-seguras-juarez
 docker compose up --build
+```
 
+* **Frontend:** `http://localhost:5173`
+* **Backend API:** `http://localhost:8000` (`/docs` para Swagger)
 
-Frontend: http://localhost:5173
+### Opción B: Ejecución Manual (Desarrollo)
 
-Backend API: http://localhost:8000 (/docs para Swagger)
+**1. Backend (FastAPI):**
 
-Opción B: Ejecución Manual (Desarrollo)
-1. Backend (FastAPI):
-
-Bash
+```bash
 cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
-2. Poblar base de datos (opcional en local):
+```
 
-Bash
+**2. Poblar base de datos (opcional en local):**
+
+```bash
 cd backend
 $env:PYTHONPATH="."
 python ../db/seed.py
-3. Frontend (React + Vite):
+```
 
-Bash
+**3. Frontend (React + Vite):**
+
+```bash
 cd frontend
 npm install
 npm run dev
-Estructura del Repositorio
-Plaintext
+```
+
+---
+
+## Estructura del Repositorio
+
+```text
 calles-seguras-juarez/
 ├── backend/            # API FastAPI, modelos SQLAlchemy, esquemas Pydantic y Dockerfile
 ├── frontend/           # Aplicación React + TypeScript + Vite y configuración vercel.json
@@ -83,10 +93,17 @@ calles-seguras-juarez/
 ├── GEMINI.md           # Contexto técnico del proyecto para asistentes de IA
 ├── AI_USAGE.md         # Bitácora de uso responsable de Inteligencia Artificial
 └── README.md           # Documentación general del proyecto
-Privacidad y Cumplimiento
-Los reportes publicados en la vista ciudadana se muestran de forma anónima conforme a los principios de protección de datos personales (LFPDPPP), resguardando la identidad de los denunciantes mientras se transparenta la atención urbana por colonia y sector.
+```
 
-Autores
-Omar Padilla Torres — Instituto Tecnológico de Ciudad Juárez (ITCJ)
+---
 
-Daniel Valadez Macías — Instituto Tecnológico de Ciudad Juárez (ITCJ)
+## Privacidad y Cumplimiento
+
+Los reportes publicados en la vista ciudadana se muestran de forma anónima conforme a los principios de protección de datos personales (**LFPDPPP**), resguardando la identidad de los denunciantes mientras se transparenta la atención urbana por colonia y sector.
+
+---
+
+## Autores
+
+* **Omar Padilla Torres** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
+* **Daniel Valadez Macías** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
