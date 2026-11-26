@@ -6,9 +6,9 @@ Plataforma web cívica de participación ciudadana, monitoreo geoespacial y gest
 
 ## Despliegue en Producción
 
-* **Aplicación Web (Frontend):** [https://calles-seguras-juarez-sooty.vercel.app/](https://calles-seguras-juarez-sooty.vercel.app/)
-* **API REST (Backend):** [https://calles-seguras-juarez-api-i2sn.onrender.com](https://calles-seguras-juarez-api-i2sn.onrender.com)
-* **Documentación Interactiva (Swagger UI):** [https://calles-seguras-juarez-api-i2sn.onrender.com/docs](https://calles-seguras-juarez-api-i2sn.onrender.com/docs)
+- **Aplicación Web (Frontend):** [https://calles-seguras-juarez-sooty.vercel.app/](https://calles-seguras-juarez-sooty.vercel.app/)
+- **API REST (Backend):** [https://calles-seguras-juarez-api-i2sn.onrender.com](https://calles-seguras-juarez-api-i2sn.onrender.com)
+- **Documentación Interactiva (Swagger UI):** [https://calles-seguras-juarez-api-i2sn.onrender.com/docs](https://calles-seguras-juarez-api-i2sn.onrender.com/docs)
 
 > **Nota sobre instancia gratuita:** El backend en Render entra en suspensión tras 15 minutos de inactividad; la primera petición puede tardar ~25–30 segundos en responder mientras se reactiva el contenedor.
 
@@ -24,32 +24,18 @@ El proyecto implementa una arquitectura desacoplada de tres capas:
 
 ---
 
-## Cuentas de Prueba (`db/seed.py`)
-
-El entorno de producción cuenta con 5 usuarios precargados para validar cada nivel de permisos:
-
-| Rol | Correo Electrónico | Contraseña | Permisos Principales |
-| :--- | :--- | :--- | :--- |
-| **Ciudadano** | `ciudadano@callesjuarez.org` | `Juarez2026!` | Crear reportes, consultar mapa público y seguimiento por folio. |
-| **Ciudadano (2)** | `vecino2@callesjuarez.org` | `Juarez2026!` | Crear reportes y confirmar incidencias vecinales. |
-| **Moderador** | `moderador@callesjuarez.org` | `Juarez2026!` | Validar reportes entrantes, filtrar duplicados y cambiar estatus inicial. |
-| **Coordinador** | `coordinador@callesjuarez.org` | `Juarez2026!` | Acceso al tablero analítico, asignación de prioridades y gestión integral. |
-| **Enlace Municipal** | `enlace@juarez.gob.mx` | `Juarez2026!` | Seguimiento interinstitucional, resolución de incidencias y exportación de métricas. |
-
----
-
 ## Instalación y Ejecución Local
 
 ### Opción A: Con Docker Compose
 
 ```bash
-git clone [https://github.com/OmarPadilla05/calles-seguras-juarez.git](https://github.com/OmarPadilla05/calles-seguras-juarez.git)
+git clone [https://github.com/tpomar-0502/calles-seguras-juarez.git](https://github.com/tpomar-0502/calles-seguras-juarez.git)
 cd calles-seguras-juarez
 docker compose up --build
 ```
 
-* **Frontend:** `http://localhost:5173`
-* **Backend API:** `http://localhost:8000` (`/docs` para Swagger)
+- **Frontend:** `http://localhost:5173`
+- **Backend API:** `http://localhost:8000` (`/docs` para Swagger)
 
 ### Opción B: Ejecución Manual (Desarrollo)
 
@@ -105,5 +91,5 @@ Los reportes publicados en la vista ciudadana se muestran de forma anónima conf
 
 ## Autores
 
-* **Omar Padilla Torres** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
-* **Daniel Valadez Macías** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
+- **Omar Padilla Torres** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
+- **Daniel Valadez Macías** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
