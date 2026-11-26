@@ -11,7 +11,7 @@
 
 ## Arquitectura y Stack Tecnológico
 
-* **Frontend (`/frontend`):** React 18 + TypeScript + Vite. Estilizado responsivo (*mobile-first*), visualización de mapas interactivos, gráficas estadísticas de 12 semanas y enrutamiento SPA configurado en `frontend/vercel.json`.
+* **Frontend (`/frontend`):** React 18 + TypeScript + Vite. Estilizado responsivo (*mobile-first*), visualización de mapas interactivos, gráficas estadísticas de 12 semanas y enrutamiento SPA configurado en `frontend/vercel.json`. 
   * Variable de entorno clave: `VITE_API_URL` (debe apuntar a la URL base de la API incluyendo `/api/v1`).
 * **Backend (`/backend`):** Python 3.12 + FastAPI + Pydantic v2 + SQLAlchemy. Autenticación JWT (`Bearer`) con control de acceso basado en roles (RBAC).
   * Variables de entorno clave: `DATABASE_URL`, `SECRET_KEY`, `CORS_ORIGINS`, `TIMEZONE`.
