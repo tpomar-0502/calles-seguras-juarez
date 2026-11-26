@@ -15,3 +15,9 @@ frontend/dist/
 # Sistema / IDEs
 .DS_Store
 .vscode/
+
+#Base de datos
+*.db
+
+*.db
+.ruff_cache/

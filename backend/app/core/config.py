@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "cambia_esta_clave_secreta_en_produccion_2026_itcj"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
-    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
+    CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 
     # Límites y reglas de negocio documentadas (RN-01 a RN-10)
     TIMEZONE: str = "America/Ciudad_Juarez"

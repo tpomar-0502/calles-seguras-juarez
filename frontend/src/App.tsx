@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./api/AuthContext";
 import { AdminDashboardPage } from "./pages/AdminDashboardPage";
 import { CreateReportPage } from "./pages/CreateReportPage";
 import { ExplorePage } from "./pages/ExplorePage";
