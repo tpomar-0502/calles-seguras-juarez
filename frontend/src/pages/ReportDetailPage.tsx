@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { apiFetch } from "../api/client";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../api/AuthContext";
 import { Reporte } from "../types";
 
 export const ReportDetailPage: React.FC = () => {

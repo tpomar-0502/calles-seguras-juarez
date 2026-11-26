@@ -1,7 +1,7 @@
 // frontend/src/pages/LoginPage.tsx
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../api/AuthContext";
 
 export const LoginPage: React.FC = () => {
   const { login } = useAuth();
