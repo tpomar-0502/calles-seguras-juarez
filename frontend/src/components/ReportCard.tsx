@@ -43,7 +43,7 @@ export const ReportCard: React.FC<Props> = ({ reporte }) => {
             Nivel: {reporte.nivel_agua}
           </span>
         )}
-        <span className="badge-neutral">Antigüedad: {reporte.longevidad_dias} d</span>
+        <span className="badge-neutral">Reportado hace: {reporte.longevidad_dias} d</span>
         <span className="badge-neutral">Confirmaciones: {reporte.confirmaciones}</span>
       </div>
 
