@@ -19,7 +19,9 @@ Plataforma web cívica de participación ciudadana, monitoreo geoespacial y gest
 El proyecto implementa una arquitectura desacoplada de tres capas:
 
 1. **Capa de Presentación (Vercel):** SPA desarrollada en **React + TypeScript + Vite**, con mapas interactivos, visualización estadística de las últimas 12 semanas, filtros por colonia/sector/categoría y diseño responsivo (*mobile-first*).
+
 2. **Capa de Lógica de Negocio (Render):** API REST construida con **FastAPI (Python 3.12)**, validación de esquemas con **Pydantic**, ORM **SQLAlchemy**, autenticación basada en **JWT** y control de acceso basado en roles (RBAC).
+
 3. **Capa de Persistencia (Neon):** Base de datos relacional **PostgreSQL** en la nube, inicializada con 4 sectores administrativos, 24 colonias reales de Ciudad Juárez y 500 reportes distribuidos en 12 semanas.
 
 ---
@@ -91,5 +93,5 @@ Los reportes publicados en la vista ciudadana se muestran de forma anónima conf
 
 ## Autores
 
-- **Omar Padilla Torres** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
-- **Daniel Valadez Macías** — Instituto Tecnológico de Ciudad Juárez (ITCJ)
+- **Omar Padilla Torres** — Instituto Tecnológico de Ciudad Juárez (ITCJ).
+- **Daniel Valadez Macías** — Instituto Tecnológico de Ciudad Juárez (ITCJ).
