@@ -47,7 +47,7 @@ export const MyReportsPage: React.FC = () => {
   return (
     <div className="container page-content">
       <div className="section-header">
-        <h1>Mis reportes</h1>
+        <h1>Historial de mis reportes</h1>
         <Link to="/reportar" className="btn btn-primary">+ Nuevo reporte</Link>
       </div>
 
