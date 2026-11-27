@@ -43,8 +43,8 @@ export const Navbar: React.FC = () => {
             </>
           ) : (
             <>
-              <Link to="/login" className="btn btn-outline-light btn-sm">Entrar</Link>
-              <Link to="/registro" className="btn btn-primary btn-sm">Crear cuenta</Link>
+              <Link to="/login" className="btn btn-outline-light btn-sm">Iniciar Sesión</Link>
+              <Link to="/registro" className="btn btn-primary btn-sm">Registrarse</Link>
             </>
           )}
         </div>
