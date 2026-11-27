@@ -185,7 +185,7 @@ export const ExplorePage: React.FC = () => {
             <input
               id="f-q"
               type="text"
-              placeholder="BCH-2026... o Av. 16 de Septiembre"
+              placeholder="Buscar por folio o calle..."
               value={busqueda}
               onChange={(e) => setBusqueda(e.target.value)}
             />
