@@ -537,3 +537,286 @@ textarea {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ---------- 1. Accesibilidad: foco visible con teclado (WCAG 2.4.7) ---------- */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.site-header :focus-visible,
+.site-footer :focus-visible {
+  outline-color: #fbbf24;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2);
+}
+
+/* ---------- 2. Botones: respuesta al pasar el mouse y estado deshabilitado ---------- */
+.btn {
+  transition: background-color 0.15s, box-shadow 0.15s, transform 0.05s;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.btn-danger:hover {
+  background: #991b1b;
+}
+
+.btn-dark:hover {
+  background: var(--navy-light);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- 3. Encabezado y portada ---------- */
+.site-header {
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-section p {
+  margin: 0;
+  color: #e2e8f0;
+}
+
+/* ---------- 4. Tarjetas de reporte ---------- */
+.report-card {
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.report-card:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.card-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.distance-chip {
+  color: var(--info);
+  font-weight: 600;
+}
+
+.card-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+/* ---------- 5. Detalle del reporte ---------- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.detail-grid > div {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+}
+
+.detail-grid dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.detail-grid dd {
+  margin: 0.15rem 0 0;
+  font-weight: 600;
+}
+
+.interaction-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+/* Historial como línea de tiempo */
+.timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem;
+  border-left: 3px solid var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 1rem 1rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1rem - 7.5px);
+  top: 0.3rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid #ffffff;
+}
+
+.timeline-item time {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.timeline-item p {
+  margin: 0.25rem 0 0;
+}
+
+/* ---------- 6. Mensajes de estado, carga y notas ---------- */
+.status-note {
+  margin: 0.75rem 0 0;
+  padding: 0.6rem 0.8rem;
+  background: #e0f2fe;
+  color: #075985;
+  border-left: 4px solid var(--info);
+  border-radius: 6px;
+  font-size: 0.92rem;
+}
+
+.state-msg {
+  padding: 1rem 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.state-msg::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+  border: 2px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: csj-spin 0.8s linear infinite;
+}
+
+@keyframes csj-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.muted-text {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.block-note {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+/* ---------- 7. Formularios, duplicados, tablas y paginación ---------- */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.checkbox-label input {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+}
+
+.dup-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #fde68a;
+}
+
+.data-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.pagination span {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ---------- 8. Respeto a quien prefiere menos animación ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .report-card {
+    transition: none;
+  }
+
+  .report-card:hover,
+  .btn:active {
+    transform: none;
+  }
+
+  .state-msg::before {
+    animation: none;
+  }
+}
